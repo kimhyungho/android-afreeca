@@ -15,11 +15,11 @@ class GetBroadListUseCase @Inject constructor(
     private val repo: BroadRepository
 ) : PagingUseCase<GetBroadListUseCase.Params, Broad> {
     override fun invoke(params: Params?): Flow<PagingData<Broad>> {
-        val (selectedValue) = params ?: throw IllegalArgumentException("params can not be null")
-        return repo.getBroadList(selectedValue)
+        val (selectValue) = params ?: throw IllegalArgumentException("params can not be null")
+        return repo.getBroadList(selectValue)
     }
 
     data class Params(
-        val selectedValue: String?
+        val selectValue: String?
     )
 }

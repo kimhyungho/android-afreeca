@@ -1,10 +1,12 @@
 package com.hardy.data.mapper
 
+import android.util.Log
 import com.hardy.data.remote.model.response.GetBroadListResponse
 import com.hardy.domain.model.Broad
 
 object BroadMapper : Mapper<GetBroadListResponse.BroadResponse, Broad> {
     override fun mapToDomain(from: GetBroadListResponse.BroadResponse): Broad {
+        Log.d("kkkk", from.broadThumb?.removePrefix("//").toString())
         return Broad(
             broadTitle = from.broadTitle,
             visitBroadType = from.visitBroadType,
@@ -13,8 +15,8 @@ object BroadMapper : Mapper<GetBroadListResponse.BroadResponse, Broad> {
             broadNo = from.broadNo,
             userId = from.userId,
             userNick = from.userNick,
-            profileImg = from.profileImg,
-            broadThumb = from.broadThumb,
+            profileImg = "https://" + from.profileImg?.removePrefix("//"),
+            broadThumb = "https://" + from.broadThumb?.removePrefix("//"),
             broadStart = from.broadStart,
             broadGrad = from.broadGrad,
             broadBps = from.broadBps,

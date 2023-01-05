@@ -22,7 +22,7 @@ class BroadListPagerAdapter(
     }
 
     override fun createFragment(position: Int): Fragment {
-        return BroadListFragment()
+        return BroadListFragment(broadCategories[position].cateNo)
     }
 
     @SuppressLint("NotifyDataSetChanged")

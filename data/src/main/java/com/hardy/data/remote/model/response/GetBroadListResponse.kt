@@ -4,42 +4,42 @@ import com.google.gson.annotations.SerializedName
 
 data class GetBroadListResponse(
     @SerializedName("total_cnt")
-    val totalCnt: Int,
+    val totalCnt: Int? = null,
     @SerializedName("page_no")
-    val pageNo: Int,
+    val pageNo: Int? = null,
     @SerializedName("broad")
-    val broads: List<BroadResponse>,
+    val broads: List<BroadResponse>? = null,
     @SerializedName("time")
-    val time: Long
+    val time: Long? = null
 ) {
     data class BroadResponse(
         @SerializedName("broad_title")
-        val broadTitle: String,
+        val broadTitle: String? = null,
         @SerializedName("visit_broad_type")
-        val visitBroadType: String,
+        val visitBroadType: String? = null,
         @SerializedName("is_password")
-        val isPassword: String,
+        val isPassword: String? = null,
         @SerializedName("broad_cate_no")
-        val broadCateNo: String,
+        val broadCateNo: String? = null,
         @SerializedName("broad_no")
-        val broadNo: String,
+        val broadNo: String? = null,
         @SerializedName("user_id")
-        val userId: String,
+        val userId: String? = null,
         @SerializedName("user_nick")
-        val userNick: String,
+        val userNick: String? = null,
         @SerializedName("profile_img")
-        val profileImg: String,
+        val profileImg: String? = null,
         @SerializedName("broad_thumb")
-        val broadThumb: String,
+        val broadThumb: String? = null,
         @SerializedName("broad_start")
-        val broadStart: String,
+        val broadStart: String? = null,
         @SerializedName("broad_grade")
-        val broadGrad: String,
+        val broadGrad: String? = null,
         @SerializedName("broad_bps")
-        val broadBps: String,
+        val broadBps: String? = null,
         @SerializedName("broad_resolution")
-        val broadResolution: String,
+        val broadResolution: String? = null,
         @SerializedName("total_view_cnt")
-        val totalViewCnt: String
+        val totalViewCnt: String? = null
     )
 }
