@@ -14,6 +14,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        buildConfigField("String", "BASE_URL", "\"https://openapi.afreecatv.com/\"")
+        // local.properties에 넣어 관리할 예정이었으나, 제출용으로 gradle에 하드코딩 하겠습니다.
+        buildConfigField("String", "CLIENT_ID", "\"af_mobilelab_dev_e0f147f6c034776add2142b425e81777\"")
     }
 
     buildTypes {

@@ -42,6 +42,9 @@ dependencies {
     api(Dependencies.COROUTINE_CORE)
     api(Dependencies.COROUTINE_ANDROID)
 
+    api(Dependencies.PAGING)
+//    testImplementation "androidx.paging:paging-common:$paging_version"
+
     testImplementation(Testing.JUNIT4)
     androidTestImplementation(Testing.ANDROID_JUNIT)
     androidTestImplementation(Testing.ESPRESSO_CORE)
