@@ -12,21 +12,45 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp">
 
         <ImageView
             android:id="@+id/thumb_image_view"
-            radius="@{16}"
+            radius="@{8f}"
             src="@{uiModel.broadThumb}"
             android:layout_width="176dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_height="100dp"
             android:adjustViewBounds="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/live_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/thumb_image_view"
+            app:layout_constraintTop_toTopOf="@+id/thumb_image_view">
+
+            <ImageView
+                android:id="@+id/live_image_view"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:src="@drawable/oval_red" />
+
+            <TextView
+                android:id="@+id/live_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/live" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/title_text_view"

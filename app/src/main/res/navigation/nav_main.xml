@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/dest_main">
 
     <fragment
         android:id="@+id/dest_main"
         android:name="com.hardy.afreeca.ui.main.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_dest_main_to_dest_broad_detail"
+            app:destination="@id/dest_broad_detail"
+            app:enterAnim="@anim/slide_in_from_right"
+            app:exitAnim="@anim/slide_out_to_left"
+            app:popEnterAnim="@anim/slide_in_from_left"
+            app:popExitAnim="@anim/slide_out_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_broad_detail"
+        android:name="com.hardy.afreeca.ui.broaddetail.BroadDetailFragment"
+        android:label="BroadDetailFragment"
+        tools:layout="@layout/fragment_broad_detail">
+
+        <argument
+            android:name="broad"
+            app:argType="com.hardy.domain.model.Broad"
+            app:nullable="false" />
+    </fragment>
 </navigation>

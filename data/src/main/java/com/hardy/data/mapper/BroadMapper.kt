@@ -6,7 +6,6 @@ import com.hardy.domain.model.Broad
 
 object BroadMapper : Mapper<GetBroadListResponse.BroadResponse, Broad> {
     override fun mapToDomain(from: GetBroadListResponse.BroadResponse): Broad {
-        Log.d("kkkk", from.broadThumb?.removePrefix("//").toString())
         return Broad(
             broadTitle = from.broadTitle,
             visitBroadType = from.visitBroadType,

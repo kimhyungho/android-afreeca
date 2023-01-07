@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.hardy.afreeca.ui.broaddetail.BroadDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back" />
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_start"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="16dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guide_end"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="16dp" />
+
+                <ImageView
+                    android:id="@+id/thumb_image_view"
+                    radius="@{24f}"
+                    src="@{viewModel.broad.broadThumb}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintEnd_toStartOf="@+id/guide_end"
+                    app:layout_constraintStart_toStartOf="@+id/guide_start"
+                    app:layout_constraintTop_toBottomOf="@+id/user_id_text_view" />
+
+                <LinearLayout
+                    android:id="@+id/live_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="@+id/thumb_image_view"
+                    app:layout_constraintTop_toTopOf="@+id/thumb_image_view">
+
+                    <ImageView
+                        android:id="@+id/live_image_view"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:src="@drawable/oval_red" />
+
+                    <TextView
+                        android:id="@+id/live_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="@string/live" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/title_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.broad.broadTitle}"
+                    app:layout_constraintEnd_toStartOf="@+id/guide_end"
+                    app:layout_constraintStart_toStartOf="@+id/guide_start"
+                    app:layout_constraintTop_toBottomOf="@+id/thumb_image_view"
+                    tools:text="hardy의 제주도 힐링 여행" />
+
+                <ImageView
+                    android:id="@+id/person_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="@+id/guide_start"
+                    app:layout_constraintTop_toBottomOf="@+id/title_text_view"
+                    app:srcCompat="@drawable/ic_person" />
+
+                <TextView
+                    android:id="@+id/total_view_and_broad_start_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.broad.totalViewCnt + ` · ` + viewModel.broad.broadStart}"
+                    app:layout_constraintBottom_toBottomOf="@+id/person_image_view"
+                    app:layout_constraintEnd_toStartOf="@+id/guide_end"
+                    app:layout_constraintStart_toEndOf="@+id/person_image_view"
+                    app:layout_constraintTop_toTopOf="@+id/person_image_view"
+                    tools:text="9999 · 2023-01-07 13:23:45" />
+
+                <ImageView
+                    android:id="@+id/profile_image_view"
+                    isCircular="@{true}"
+                    src="@{viewModel.broad.profileImg}"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guide_end"
+                    app:layout_constraintStart_toStartOf="@+id/guide_start"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/nickname_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@{viewModel.broad.userNick}"
+                    app:layout_constraintEnd_toStartOf="@+id/guide_end"
+                    app:layout_constraintStart_toStartOf="@+id/guide_start"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_image_view"
+                    tools:text="[5M]Hardy" />
+
+                <TextView
+                    android:id="@+id/user_id_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@{`@` + viewModel.broad.userId}"
+                    app:layout_constraintEnd_toStartOf="@+id/guide_end"
+                    app:layout_constraintStart_toStartOf="@+id/guide_start"
+                    app:layout_constraintTop_toBottomOf="@+id/nickname_text_view"
+                    tools:text="\@hardy" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

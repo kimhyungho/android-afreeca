@@ -1,6 +1,5 @@
 package com.hardy.afreeca.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -31,7 +30,10 @@ class BroadListAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        item?.let { holder.bind(item) }
+        item?.let {
+            holder.bind(item)
+            holder.itemView.setOnClickListener { listener?.onClickItem(item) }
+        }
     }
 
     class ViewHolder(
@@ -46,7 +48,7 @@ class BroadListAdapter :
     }
 
     interface Listener {
-        fun onClickItem(feedId: String)
+        fun onClickItem(broad: Broad)
     }
 }
 

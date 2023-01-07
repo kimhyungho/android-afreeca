@@ -4,6 +4,7 @@ package com.hardy.afreeca.ui.broadlist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.hardy.domain.interactors.broad.GetBroadListUseCase
 import com.hardy.domain.interactors.broadcategory.GetBroadCategoryListUseCase
 import com.hardy.domain.model.Broad
@@ -24,6 +25,7 @@ class BroadListViewModel @Inject constructor(
 
     fun getBroadList(selectValue: String) = viewModelScope.launch(Dispatchers.IO) {
         getBroadListUseCase(GetBroadListUseCase.Params(selectValue))
+            .cachedIn(viewModelScope)
             .collect { response ->
                 _broads.value = response
             }

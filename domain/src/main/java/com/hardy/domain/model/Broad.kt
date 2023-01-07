@@ -1,5 +1,9 @@
 package com.hardy.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Broad(
     val broadTitle: String?,
     val visitBroadType: String?,
@@ -15,4 +19,4 @@ data class Broad(
     val broadBps: String?,
     val broadResolution: String?,
     val totalViewCnt: String?
-)
+): Parcelable
