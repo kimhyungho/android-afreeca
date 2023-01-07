@@ -14,6 +14,8 @@ import com.hardy.afreeca.extensions.dpToIntPx
         "isCircular",
         "radius",
         "placeholder",
+        "overrideWidth",
+        "overrideHeight"
     ],
     requireAll = false
 )
@@ -22,16 +24,28 @@ fun ImageView.bind(
     isCircular: Boolean? = null,
     radius: Float = 0f,
     placeholder: Drawable? = null,
+    overrideWidth: Float? = null,
+    overrideHeight: Float? = null
 ) {
+    fun dpToIntPx(dp: Float): Int {
+        return this@bind.context.dpToIntPx(dp)
+    }
+
     Glide.with(this)
         .load(src)
         .placeholder(placeholder)
         .error(placeholder)
         .apply {
+            if (overrideWidth != null && overrideHeight != null) {
+                override(
+                    dpToIntPx(overrideWidth),
+                    dpToIntPx(overrideHeight)
+                )
+            }
             if (isCircular == true) {
                 apply(RequestOptions.circleCropTransform())
             } else if (radius > 0) {
-                transform(RoundedCorners(this@bind.context.dpToIntPx(radius)))
+                transform(RoundedCorners(dpToIntPx(radius)))
             }
         }.into(this)
 }

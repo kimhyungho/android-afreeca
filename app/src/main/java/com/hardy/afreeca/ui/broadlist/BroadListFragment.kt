@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hardy.afreeca.R
 import com.hardy.afreeca.adapters.BroadListAdapter
+import com.hardy.afreeca.adapters.PagingStateAdapter
 import com.hardy.afreeca.base.BaseViewModelFragment
 import com.hardy.afreeca.databinding.FragmentBroadListBinding
 import com.hardy.afreeca.ui.main.MainFragmentDirections
@@ -39,7 +40,9 @@ class BroadListFragment(
         super.onViewCreated(view, savedInstanceState)
 
         with(viewDataBinding) {
-            broadRecyclerView.adapter = broadListAdapter
+            broadRecyclerView.adapter = broadListAdapter.withLoadStateFooter(
+                footer = PagingStateAdapter { broadListAdapter.retry() }
+            )
         }
 
         with(viewModel) {
@@ -49,5 +52,10 @@ class BroadListFragment(
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        viewDataBinding.broadRecyclerView.adapter = null
+        super.onDestroyView()
     }
 }

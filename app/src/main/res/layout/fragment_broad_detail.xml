@@ -53,7 +53,7 @@
 
                 <ImageView
                     android:id="@+id/thumb_image_view"
-                    radius="@{24f}"
+                    radius="@{16f}"
                     src="@{viewModel.broad.broadThumb}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -63,37 +63,14 @@
                     app:layout_constraintStart_toStartOf="@+id/guide_start"
                     app:layout_constraintTop_toBottomOf="@+id/user_id_text_view" />
 
-                <LinearLayout
-                    android:id="@+id/live_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toStartOf="@+id/thumb_image_view"
-                    app:layout_constraintTop_toTopOf="@+id/thumb_image_view">
-
-                    <ImageView
-                        android:id="@+id/live_image_view"
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:src="@drawable/oval_red" />
-
-                    <TextView
-                        android:id="@+id/live_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:text="@string/live" />
-
-                </LinearLayout>
-
                 <TextView
                     android:id="@+id/title_text_view"
+                    style="@style/Theme.Afreeca.TextView.BroadTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@{viewModel.broad.broadTitle}"
+                    android:textColor="@color/Gray800"
                     app:layout_constraintEnd_toStartOf="@+id/guide_end"
                     app:layout_constraintStart_toStartOf="@+id/guide_start"
                     app:layout_constraintTop_toBottomOf="@+id/thumb_image_view"
@@ -106,13 +83,16 @@
                     android:layout_marginTop="4dp"
                     app:layout_constraintStart_toStartOf="@+id/guide_start"
                     app:layout_constraintTop_toBottomOf="@+id/title_text_view"
-                    app:srcCompat="@drawable/ic_person" />
+                    app:srcCompat="@drawable/ic_person"
+                    app:tint="@color/Gray500" />
 
                 <TextView
                     android:id="@+id/total_view_and_broad_start_text_view"
+                    style="@style/Theme.Afreeca.TextView.TotalView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.broad.totalViewCnt + ` · ` + viewModel.broad.broadStart}"
+                    android:textColor="@color/Gray500"
                     app:layout_constraintBottom_toBottomOf="@+id/person_image_view"
                     app:layout_constraintEnd_toStartOf="@+id/guide_end"
                     app:layout_constraintStart_toEndOf="@+id/person_image_view"
@@ -132,10 +112,12 @@
 
                 <TextView
                     android:id="@+id/nickname_text_view"
+                    style="@style/Theme.Afreeca.TextView.Nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="@{viewModel.broad.userNick}"
+                    android:textColor="@color/Gray500"
                     app:layout_constraintEnd_toStartOf="@+id/guide_end"
                     app:layout_constraintStart_toStartOf="@+id/guide_start"
                     app:layout_constraintTop_toBottomOf="@+id/profile_image_view"
@@ -143,10 +125,12 @@
 
                 <TextView
                     android:id="@+id/user_id_text_view"
+                    style="@style/Theme.Afreeca.TextView.Nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@{`@` + viewModel.broad.userId}"
+                    android:textColor="@color/Gray500"
                     app:layout_constraintEnd_toStartOf="@+id/guide_end"
                     app:layout_constraintStart_toStartOf="@+id/guide_start"
                     app:layout_constraintTop_toBottomOf="@+id/nickname_text_view"

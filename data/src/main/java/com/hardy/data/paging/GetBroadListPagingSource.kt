@@ -21,7 +21,7 @@ class GetBroadListPagingSource(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Broad> {
         return try {
-            val currentPage = params.key ?: 1
+            val currentPage = params.key ?: START_PAGE
             val response = service.getBroadList(
                 selectValue = selectedValue,
                 pageNo = currentPage
@@ -30,11 +30,16 @@ class GetBroadListPagingSource(
 
             LoadResult.Page(
                 data = response.broads?.map(BroadMapper::mapToDomain) ?: listOf(),
-                prevKey = if (currentPage == 1) null else currentPage - 1,
-                nextKey = if (currentPage * 60 >= (totalCount ?: 0)) null else currentPage + 1
+                prevKey = if (currentPage == START_PAGE) null else currentPage - 1,
+                nextKey = if (currentPage * COUNT_PER_PAGE >= (totalCount ?: 0)) null else currentPage + 1
             )
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
+    }
+
+    companion object {
+        const val START_PAGE = 1
+        const val COUNT_PER_PAGE = 60
     }
 }
