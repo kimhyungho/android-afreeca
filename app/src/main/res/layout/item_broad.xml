@@ -16,17 +16,31 @@
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp">
 
-        <ImageView
-            android:id="@+id/thumb_image_view"
-            overrideHeight="@{99f}"
-            overrideWidth="@{176f}"
-            radius="@{8f}"
-            src="@{uiModel.broadThumb}"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/thumb_image_card_view"
             android:layout_width="176dp"
             android:layout_height="99dp"
-            android:adjustViewBounds="true"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/thumb_image_view"
+                overrideHeight="@{99f}"
+                overrideWidth="@{176f}"
+                src="@{uiModel.broadThumb}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true" />
+
+            <include
+                android:id="@+id/thumb_image_frame"
+                layout="@layout/layout_broad_thumb_frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:type="@{`LIVE`}" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/title_text_view"
@@ -40,8 +54,8 @@
             android:text="@{uiModel.broadTitle}"
             android:textColor="@color/Gray800"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/thumb_image_view"
-            app:layout_constraintTop_toTopOf="@+id/thumb_image_view" />
+            app:layout_constraintStart_toEndOf="@+id/thumb_image_card_view"
+            app:layout_constraintTop_toTopOf="@+id/thumb_image_card_view" />
 
         <ImageView
             android:id="@+id/profile_image_view"
@@ -53,7 +67,7 @@
             android:layout_height="36dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/thumb_image_view"
+            app:layout_constraintStart_toEndOf="@+id/thumb_image_card_view"
             app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
 
         <TextView

@@ -44,4 +44,9 @@ class MainFragment : BaseViewModelFragment<FragmentMainBinding, MainViewModel>(
             }
         }
     }
+
+    override fun onDestroyView() {
+        viewDataBinding.broadListViewPager.adapter = null
+        super.onDestroyView()
+    }
 }

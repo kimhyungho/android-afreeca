@@ -12,7 +12,6 @@ import com.hardy.afreeca.extensions.dpToIntPx
     value = [
         "src",
         "isCircular",
-        "radius",
         "placeholder",
         "overrideWidth",
         "overrideHeight"
@@ -22,7 +21,6 @@ import com.hardy.afreeca.extensions.dpToIntPx
 fun ImageView.bind(
     src: String?,
     isCircular: Boolean? = null,
-    radius: Float = 0f,
     placeholder: Drawable? = null,
     overrideWidth: Float? = null,
     overrideHeight: Float? = null
@@ -44,8 +42,6 @@ fun ImageView.bind(
             }
             if (isCircular == true) {
                 apply(RequestOptions.circleCropTransform())
-            } else if (radius > 0) {
-                transform(RoundedCorners(dpToIntPx(radius)))
             }
         }.into(this)
 }
