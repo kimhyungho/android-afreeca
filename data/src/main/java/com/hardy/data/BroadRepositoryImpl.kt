@@ -18,7 +18,7 @@ class BroadRepositoryImpl @Inject constructor(
     override fun getBroadList(selectedValue: String?): Flow<PagingData<Broad>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 60,
+                pageSize = GetBroadListPagingSource.COUNT_PER_PAGE,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {
