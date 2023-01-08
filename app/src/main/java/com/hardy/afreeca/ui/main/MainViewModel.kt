@@ -22,23 +22,31 @@ class MainViewModel @Inject constructor(
     private val _broadCategories: MutableStateFlow<List<BroadCategory>> = MutableStateFlow(listOf())
     val broadCategories: StateFlow<List<BroadCategory>> = _broadCategories
 
+    private val _hasError: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val hasError: StateFlow<Boolean> = _hasError
+
     init {
-        getBroadCategories()
+        fetchBroadCategories()
     }
 
-    private fun getBroadCategories() = viewModelScope.launch(Dispatchers.IO) {
+    fun fetchBroadCategories() = viewModelScope.launch(Dispatchers.IO) {
         getBroadCategoryListUseCase()
             .collect { response ->
                 when (response) {
-                    is Response.Loading -> _getBroadCategoriesLoading.value = true
+                    is Response.Loading -> {
+                        _getBroadCategoriesLoading.value = true
+                        _hasError.value = false
+                    }
 
                     is Response.Success -> {
                         _getBroadCategoriesLoading.value = false
+                        _hasError.value = false
                         _broadCategories.value = response.data ?: listOf()
                     }
 
                     is Response.Failure -> {
                         _getBroadCategoriesLoading.value = false
+                        _hasError.value = true
                     }
                 }
             }

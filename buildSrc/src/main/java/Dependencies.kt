@@ -22,6 +22,7 @@ object Dependencies {
     const val GSON = "com.google.code.gson:gson:${Versions.GSON}"
     const val OKHTTP_INTERCEPTOR =
         "com.squareup.okhttp3:logging-interceptor:${Versions.OKHTTP_INTERCEPTOR}"
-
+    const val SWIPE_REFRESH_LAYOUT =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.SWIPE_REFRESH_LAYOUT}"
     const val PAGING = "androidx.paging:paging-runtime:${Versions.PAGING}"
 }

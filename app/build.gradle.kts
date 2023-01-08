@@ -68,6 +68,8 @@ dependencies {
     kapt(Dependencies.GLIDE_COMPILER)
     implementation(Dependencies.GLIDE)
 
+    implementation(Dependencies.SWIPE_REFRESH_LAYOUT)
+
     testImplementation(Testing.JUNIT4)
     androidTestImplementation(Testing.ANDROID_JUNIT)
     androidTestImplementation(Testing.ESPRESSO_CORE)

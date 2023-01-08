@@ -43,6 +43,12 @@ class BroadListFragment(
             broadRecyclerView.adapter = broadListAdapter.withLoadStateFooter(
                 footer = PagingStateAdapter { broadListAdapter.retry() }
             )
+
+            broadRefreshLayout.setOnRefreshListener {
+                viewModel?.setIsRefreshing(true)
+                broadListAdapter.refresh()
+                viewModel?.setIsRefreshing(false)
+            }
         }
 
         with(viewModel) {
