@@ -2,6 +2,7 @@ plugins {
     id(Plugins.ANDROID_LIBRARY)
     id(Plugins.KOTLIN_ANDROID)
     id(Plugins.KAPT)
+    kotlin(Plugins.PARCELIZE)
 }
 
 android {
@@ -41,6 +42,9 @@ dependencies {
 
     api(Dependencies.COROUTINE_CORE)
     api(Dependencies.COROUTINE_ANDROID)
+
+    api(Dependencies.PAGING)
+//    testImplementation "androidx.paging:paging-common:$paging_version"
 
     testImplementation(Testing.JUNIT4)
     androidTestImplementation(Testing.ANDROID_JUNIT)

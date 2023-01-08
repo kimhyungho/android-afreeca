@@ -6,4 +6,5 @@ object Plugins {
     const val HILT_PLUGIN = "dagger.hilt.android.plugin"
     const val KAPT = "kotlin-kapt"
     const val NAVIGATION_SAFEARGS = "androidx.navigation.safeargs.kotlin"
+    const val PARCELIZE = "plugin.parcelize"
 }

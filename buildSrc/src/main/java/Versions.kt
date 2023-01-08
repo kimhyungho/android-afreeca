@@ -13,4 +13,6 @@ object Versions {
     const val RETROFIT = "2.9.0"
     const val GSON = "2.9.0"
     const val OKHTTP_INTERCEPTOR = "4.9.1"
+    const val PAGING = "3.1.1"
+    const val SWIPE_REFRESH_LAYOUT = "1.1.0"
 }
